@@ -1,0 +1,620 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    background: #f8fafc;
+    color: #334155;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.window {
+    display: flex;
+    width: 1920px;
+    height: 1080px;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* 左側導航欄 */
+.window-header {
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 16px 0;
+}
+
+.navigation-top {
+    flex: 1;
+    padding: 0 12px;
+}
+
+.navigation-bottom {
+    padding: 0 12px;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 16px;
+}
+
+.navigation-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: #64748b;
+    border-radius: 8px;
+    margin-bottom: 4px;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.navigation-item:hover {
+    background: #f1f5f9;
+    color: #0f172a;
+}
+
+.navigation-item.active {
+    background: #3b82f6;
+    color: #ffffff;
+}
+
+.navigation-item.navigation-item--notification::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 8px;
+    height: 8px;
+    background: #ef4444;
+    border-radius: 50%;
+}
+
+.navigation-item svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.navigation-item-title {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.avatar {
+    width: 20px;
+    height: 20px;
+    background: #3b82f6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    font-size: 12px;
+}
+
+/* 中左側面板 */
+.window-panel {
+    width: 320px;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 24px;
+    overflow-y: auto;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 16px;
+}
+
+.search {
+    margin-bottom: 24px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    background: #ffffff;
+    transition: all 0.2s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* 快速統計卡片 */
+.quick-stats {
+    margin-bottom: 24px;
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    background: #f8fafc;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.stat-icon {
+    font-size: 24px;
+    margin-right: 12px;
+}
+
+.stat-content {
+    flex: 1;
+}
+
+.stat-number {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 2px;
+}
+
+/* 樹狀結構 */
+.tree {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.tree--sub {
+    margin-left: 20px;
+    margin-top: 8px;
+}
+
+.tree-branch {
+    margin-bottom: 4px;
+}
+
+.tree-branch-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.tree-branch-action:hover {
+    background: #f1f5f9;
+}
+
+.tree-branch-link {
+    text-decoration: none;
+    color: #64748b;
+    font-size: 14px;
+    font-weight: 500;
+    flex: 1;
+}
+
+.tree-branch-link.active {
+    color: #3b82f6;
+    font-weight: 600;
+}
+
+.tree-branch-link--sub {
+    font-size: 13px;
+    font-weight: 400;
+    color: #94a3b8;
+}
+
+.tree-branch-count {
+    font-size: 12px;
+    color: #94a3b8;
+    background: #f1f5f9;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+/* 主要內容區域 */
+.window-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+}
+
+.window-main-header {
+    padding: 24px 32px;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.breadcrumbs {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.breadcrumbs-item {
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumbs-item:not(:last-child)::after {
+    content: '/';
+    margin: 0 12px;
+    color: #94a3b8;
+}
+
+.breadcrumbs-item a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #64748b;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.breadcrumbs-item.current a {
+    color: #0f172a;
+    font-weight: 600;
+}
+
+.breadcrumbs-item svg {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+}
+
+.publish-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.publish-info {
+    text-align: right;
+    font-size: 12px;
+    color: #64748b;
+    line-height: 1.4;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.button--refresh {
+    background: #f1f5f9;
+    color: #475569;
+    border: 1px solid #e2e8f0;
+}
+
+.button--refresh:hover {
+    background: #e2e8f0;
+}
+
+.button--export {
+    background: #3b82f6;
+    color: #ffffff;
+}
+
+.button--export:hover {
+    background: #2563eb;
+}
+
+.button--secondary {
+    background: #f8fafc;
+    color: #475569;
+    border: 1px solid #e2e8f0;
+    font-size: 12px;
+    padding: 6px 12px;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+.button--secondary:hover {
+    background: #f1f5f9;
+}
+
+/* 主內容區 */
+.window-main-body {
+    flex: 1;
+    padding: 32px;
+    overflow-y: auto;
+}
+
+.charts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    height: 100%;
+}
+
+.chart-section {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chart-section--wide {
+    grid-column: 1 / -1;
+}
+
+.chart-header {
+    margin-bottom: 20px;
+}
+
+.chart-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 4px;
+}
+
+.chart-subtitle {
+    font-size: 12px;
+    color: #64748b;
+}
+
+.chart-container {
+    flex: 1;
+    min-height: 300px;
+}
+
+/* 右側面板 */
+.window-main-body-right {
+    width: 320px;
+    background: #ffffff;
+    border-left: 1px solid #e2e8f0;
+    padding: 24px;
+    overflow-y: auto;
+}
+
+.settings-section {
+    margin-bottom: 32px;
+}
+
+.settings-section:last-child {
+    margin-bottom: 0;
+}
+
+/* 熱門問題列表 */
+.popular-questions {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.question-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.question-item:last-child {
+    border-bottom: none;
+}
+
+.question-rank {
+    width: 24px;
+    height: 24px;
+    background: #3b82f6;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.question-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.question-text {
+    font-size: 13px;
+    color: #0f172a;
+    font-weight: 500;
+    margin-bottom: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.question-count {
+    font-size: 11px;
+    color: #64748b;
+}
+
+.question-trend {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.question-trend.up {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+.question-trend.down {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+/* 系統狀態 */
+.system-status {
+    space-y: 12px;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.status-indicator--online {
+    background: #22c55e;
+}
+
+.status-indicator--warning {
+    background: #f59e0b;
+}
+
+.status-indicator--error {
+    background: #ef4444;
+}
+
+.status-label {
+    flex: 1;
+    font-size: 12px;
+    color: #64748b;
+}
+
+.status-value {
+    font-size: 12px;
+    color: #0f172a;
+    font-weight: 500;
+}
+
+/* 快速操作 */
+.quick-actions {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 響應式調整 */
+@media (max-width: 1920px) {
+    .window {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+    }
+}
+
+/* 滾動條樣式 */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Highcharts 主題調整 */
+.highcharts-background {
+    fill: transparent;
+}
+
+.highcharts-title {
+    fill: #0f172a;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+}
+
+.highcharts-subtitle {
+    fill: #64748b;
+    font-family: 'Inter', sans-serif;
+}
+
+.highcharts-axis-labels text {
+    fill: #64748b;
+    font-family: 'Inter', sans-serif;
+}
+
+.highcharts-legend-item text {
+    fill: #475569;
+    font-family: 'Inter', sans-serif;
+}
+
+.highcharts-tooltip-box {
+    fill: #ffffff;
+    stroke: #e2e8f0;
+    stroke-width: 1;
+}
+
+/* 動畫效果 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.chart-section {
+    animation: fadeIn 0.3s ease;
+}
+
+.stat-card {
+    animation: fadeIn 0.3s ease;
+}
+
+.question-item {
+    animation: fadeIn 0.3s ease;
+} 

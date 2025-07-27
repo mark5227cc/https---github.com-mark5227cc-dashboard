@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LINEBOT 聊天機器人儀表板</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/themes/dark-unica.js"></script>
+</head>
+<body>
+    <div class="window">
+        <!-- 左側導航欄 -->
+        <header class="window-header">
+            <nav class="navigation">
+                <div class="navigation-top">
+                    <a href="#" class="navigation-item active">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 9.5L12 4L21 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M19 13V19.4C19 19.7314 18.7314 20 18.4 20H5.6C5.26863 20 5 19.7314 5 19.4V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span class="navigation-item-title">儀表板</span>
+                    </a>
+                    <a href="#" class="navigation-item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 13H11L16 8H21V4C21 2.89543 20.1046 2 19 2H5C3.89543 2 3 2.89543 3 4V13Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M3 13V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V8H16L11 13H3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span class="navigation-item-title">對話記錄</span>
+                    </a>
+                    <a href="#" class="navigation-item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M4.27148 16.2715L7.99993 12.5431L10.5 15.0431L15.9999 9.54297L19.7284 13.2715" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span class="navigation-item-title">數據分析</span>
+                    </a>
+                    <a href="#" class="navigation-item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M19.6224 10.3954L18.5247 7.7448L20 6L18 4L16.2647 5.48295L13.5578 4.36974L12.9353 2H10.981L10.3491 4.40113L7.70441 5.51596L6 4L4 6L5.45337 7.78885L4.3725 10.4463L2 11V13L4.40111 13.6555L5.51575 16.2997L4 18L6 20L7.79116 18.5403L10.397 19.6123L11 22H13L13.6045 19.6132L16.2551 18.5155C16.6969 18.8313 18 20 18 20L20 18L18.5159 16.2494L19.6139 13.598L21.9999 12.9772L22 11L19.6224 10.3954Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span class="navigation-item-title">機器人設定</span>
+                    </a>
+                    <a href="#" class="navigation-item navigation-item--notification">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 8.4C18 6.70261 17.3679 5.07475 16.2426 3.87452C15.1174 2.67428 13.5913 2 12 2C10.4087 2 8.88258 2.67428 7.75736 3.87452C6.63214 5.07475 6 6.70261 6 8.4C6 15.8667 3 18 3 18H21C21 18 18 15.8667 18 8.4Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M13.73 21C13.5542 21.3031 13.3019 21.5547 12.9982 21.7295C12.6946 21.9044 12.3504 21.9965 12 21.9965C11.6496 21.9965 11.3054 21.9044 11.0018 21.7295C10.6982 21.5547 10.4458 21.3031 10.27 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span class="navigation-item-title">通知</span>
+                    </a>
+                </div>
+                <div class="navigation-bottom">
+                    <a href="#" class="navigation-item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M19.6224 10.3954L18.5247 7.7448L20 6L18 4L16.2647 5.48295L13.5578 4.36974L12.9353 2H10.981L10.3491 4.40113L7.70441 5.51596L6 4L4 6L5.45337 7.78885L4.3725 10.4463L2 11V13L4.40111 13.6555L5.51575 16.2997L4 18L6 20L7.79116 18.5403L10.397 19.6123L11 22H13L13.6045 19.6132L16.2551 18.5155C16.6969 18.8313 18 20 18 20L20 18L18.5159 16.2494L19.6139 13.598L21.9999 12.9772L22 11L19.6224 10.3954Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span class="navigation-item-title">設定</span>
+                    </a>
+                    <a href="#" class="navigation-item">
+                        <div class="avatar">
+                            <span>🤖</span>
+                        </div>
+                        <span class="navigation-item-title">系統狀態</span>
+                    </a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- 中左側面板 -->
+        <div class="window-panel">
+            <h2 class="section-title">數據概覽</h2>
+            <div class="search">
+                <input type="text" class="search-input" placeholder="搜尋數據..." />
+            </div>
+            
+            <!-- 快速統計 -->
+            <div class="quick-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-content">
+                        <div class="stat-number">1,247</div>
+                        <div class="stat-label">今日訊息</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-content">
+                        <div class="stat-number">892</div>
+                        <div class="stat-label">活躍用戶</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-content">
+                        <div class="stat-number">96.8%</div>
+                        <div class="stat-label">回應率</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 問答類型樹狀結構 -->
+            <ul class="tree">
+                <li class="tree-branch">
+                    <div class="tree-branch-action">
+                        <a href="#" class="tree-branch-link">商品服務</a>
+                        <span class="tree-branch-count">1,234</span>
+                    </div>
+                    <ul class="tree tree--sub">
+                        <li class="tree-branch tree-branch--sub">
+                            <div class="tree-branch-action">
+                                <a href="#" class="tree-branch-link tree-branch-link--sub">商品查詢</a>
+                                <span class="tree-branch-count">567</span>
+                            </div>
+                        </li>
+                        <li class="tree-branch tree-branch--sub">
+                            <div class="tree-branch-action">
+                                <a href="#" class="tree-branch-link tree-branch-link--sub">價格諮詢</a>
+                                <span class="tree-branch-count">345</span>
+                            </div>
+                        </li>
+                        <li class="tree-branch tree-branch--sub">
+                            <div class="tree-branch-action">
+                                <a href="#" class="tree-branch-link tree-branch-link--sub">庫存查詢</a>
+                                <span class="tree-branch-count">322</span>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="tree-branch">
+                    <div class="tree-branch-action">
+                        <a href="#" class="tree-branch-link active">訂單處理</a>
+                        <span class="tree-branch-count">987</span>
+                    </div>
+                    <ul class="tree tree--sub">
+                        <li class="tree-branch tree-branch--sub">
+                            <div class="tree-branch-action">
+                                <a href="#" class="tree-branch-link tree-branch-link--sub">訂單查詢</a>
+                                <span class="tree-branch-count">456</span>
+                            </div>
+                        </li>
+                        <li class="tree-branch tree-branch--sub">
+                            <div class="tree-branch-action">
+                                <a href="#" class="tree-branch-link tree-branch-link--sub">配送追蹤</a>
+                                <span class="tree-branch-count">321</span>
+                            </div>
+                        </li>
+                        <li class="tree-branch tree-branch--sub">
+                            <div class="tree-branch-action">
+                                <a href="#" class="tree-branch-link tree-branch-link--sub">退換貨</a>
+                                <span class="tree-branch-count">210</span>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="tree-branch">
+                    <div class="tree-branch-action">
+                        <a href="#" class="tree-branch-link">客戶服務</a>
+                        <span class="tree-branch-count">756</span>
+                    </div>
+                </li>
+                <li class="tree-branch">
+                    <div class="tree-branch-action">
+                        <a href="#" class="tree-branch-link">技術支援</a>
+                        <span class="tree-branch-count">445</span>
+                    </div>
+                </li>
+                <li class="tree-branch">
+                    <div class="tree-branch-action">
+                        <a href="#" class="tree-branch-link">其他</a>
+                        <span class="tree-branch-count">234</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 主要內容區域 -->
+        <main class="window-main">
+            <div class="window-main-header">
+                <ol class="breadcrumbs">
+                    <li class="breadcrumbs-item">
+                        <a href="#">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 9.5L12 4L21 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M19 13V19.4C19 19.7314 18.7314 20 18.4 20H5.6C5.26863 20 5 19.7314 5 19.4V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            儀表板
+                        </a>
+                    </li>
+                    <li class="breadcrumbs-item current">
+                        <a href="#">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4.27148 16.2715L7.99993 12.5431L10.5 15.0431L15.9999 9.54297L19.7284 13.2715" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            數據分析總覽
+                        </a>
+                    </li>
+                </ol>
+                <div class="publish-actions">
+                    <div class="publish-info">
+                        <span>最後更新<br />
+                        <span id="lastUpdate">2分鐘前</span></span>
+                    </div>
+                    <button class="button button--refresh">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21.8884 13.2043C21.4178 18.0823 17.4234 21.9998 12.5 21.9998C7.02944 21.9998 2.5 17.4703 2.5 11.9998C2.5 6.52922 7.02944 1.99977 12.5 1.99977C15.8161 1.99977 18.6772 3.71066 20.3906 6.39977" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M17 8L20.2909 6.38897C20.6543 6.19975 21.0986 6.39816 21.1658 6.80877L21.8884 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        重新整理
+                    </button>
+                    <button class="button button--export">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 20L18 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 4V16M12 4L15.5 7.5M12 4L8.5 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        匯出報告
+                    </button>
+                </div>
+            </div>
+
+            <div class="window-main-body">
+                <!-- 圖表區域 -->
+                <div class="charts-grid">
+                    <div class="chart-section">
+                        <div class="chart-header">
+                            <h3 class="chart-title">各項問答利用率</h3>
+                            <p class="chart-subtitle">過去30天統計</p>
+                        </div>
+                        <div id="utilizationChart" class="chart-container"></div>
+                    </div>
+
+                    <div class="chart-section">
+                        <div class="chart-header">
+                            <h3 class="chart-title">答題成功率</h3>
+                            <p class="chart-subtitle">本週 vs 本月對比</p>
+                        </div>
+                        <div id="successRateChart" class="chart-container"></div>
+                    </div>
+
+                    <div class="chart-section chart-section--wide">
+                        <div class="chart-header">
+                            <h3 class="chart-title">24小時問題分布</h3>
+                            <p class="chart-subtitle">今日熱門時段分析</p>
+                        </div>
+                        <div id="hourlyQuestionsChart" class="chart-container"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- 右側面板 -->
+        <div class="window-main-body-right">
+            <section class="settings-section">
+                <h2 class="section-title">熱門問題排行</h2>
+                <div class="popular-questions">
+                    <div class="question-item">
+                        <div class="question-rank">1</div>
+                        <div class="question-content">
+                            <div class="question-text">如何查詢訂單狀態？</div>
+                            <div class="question-count">1,234次</div>
+                        </div>
+                        <div class="question-trend up">+12%</div>
+                    </div>
+                    <div class="question-item">
+                        <div class="question-rank">2</div>
+                        <div class="question-content">
+                            <div class="question-text">退換貨政策說明</div>
+                            <div class="question-count">987次</div>
+                        </div>
+                        <div class="question-trend up">+8%</div>
+                    </div>
+                    <div class="question-item">
+                        <div class="question-rank">3</div>
+                        <div class="question-content">
+                            <div class="question-text">商品規格詢問</div>
+                            <div class="question-count">756次</div>
+                        </div>
+                        <div class="question-trend down">-3%</div>
+                    </div>
+                    <div class="question-item">
+                        <div class="question-rank">4</div>
+                        <div class="question-content">
+                            <div class="question-text">配送時間查詢</div>
+                            <div class="question-count">623次</div>
+                        </div>
+                        <div class="question-trend up">+15%</div>
+                    </div>
+                    <div class="question-item">
+                        <div class="question-rank">5</div>
+                        <div class="question-content">
+                            <div class="question-text">會員註冊問題</div>
+                            <div class="question-count">534次</div>
+                        </div>
+                        <div class="question-trend up">+5%</div>
+                    </div>
+                    <div class="question-item">
+                        <div class="question-rank">6</div>
+                        <div class="question-content">
+                            <div class="question-text">付款方式說明</div>
+                            <div class="question-count">445次</div>
+                        </div>
+                        <div class="question-trend down">-7%</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="settings-section">
+                <h2 class="section-title">系統狀態</h2>
+                <div class="system-status">
+                    <div class="status-item">
+                        <div class="status-indicator status-indicator--online"></div>
+                        <span class="status-label">機器人狀態</span>
+                        <span class="status-value">正常運行</span>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-indicator status-indicator--warning"></div>
+                        <span class="status-label">API回應時間</span>
+                        <span class="status-value">1.2秒</span>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-indicator status-indicator--online"></div>
+                        <span class="status-label">資料庫連線</span>
+                        <span class="status-value">正常</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="settings-section">
+                <h2 class="section-title">快速操作</h2>
+                <div class="quick-actions">
+                    <button class="button button--secondary">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        重啟機器人
+                    </button>
+                    <button class="button button--secondary">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 20L18 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        清除快取
+                    </button>
+                    <button class="button button--secondary">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21.8884 13.2043C21.4178 18.0823 17.4234 21.9998 12.5 21.9998" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        更新模型
+                    </button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
